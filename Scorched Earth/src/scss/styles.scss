@@ -1,9 +1,22 @@
 // Import all of Bootstrap's CSS
 @use "bootstrap/scss/bootstrap";
 
+html, body {
+    overflow: hidden;
+}
+
 #start{
     width: 30%;
 
+}
+
+body {
+    position: relative;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
 }
 
 .background-overlay {
@@ -16,11 +29,6 @@
     z-index: -1;
 }
 
-body {
-    position: relative;
-    background-image: url("../images/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 100vh;
+nav {
+    opacity: 0.8;
 }
