@@ -64,6 +64,13 @@ module.exports = {
         generator: {
           filename: './src/images/[name][ext]'
         }
+      },
+      {
+        test: /\.(txt)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: './src/pages/[name][ext]'
+        }
       }
     ]
   }
