@@ -6,7 +6,6 @@
     <title>Scorched Earth</title>
   </head>
   <body>
-    <div class="background-overlay"></div>
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
       <div class="container">
@@ -20,23 +19,26 @@
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a href="Projects_Active.html" class="nav-link">Active projects</a>
+                <a class="nav-link" id="CreditsButton" onclick="LoadCredits()">Credits</a>
               </li>
               <li class="nav-item">
-                <a href="Projects_Finished.html" class="nav-link">Finished projects</a>
+                <a href="https://github.com/Micahkruckow/SO1---Scorched-earth" class="nav-link">Code</a>
               </li>
               <li class="nav-item">
-                <a href="Projects_Future.html" class="nav-link">Future projects</a>
+                <a href="index.html" class="nav-link">Return to Main</a>
               </li>
             </ul>
         </div>
       </div>
     </nav>
     <!--Start Menu-->
-    <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="d-flex justify-content-center align-items-center vh-100" id="Content">
+      <div id="background-image">
+        <div id="background-overlay"></div>
+      </div>
       <div class="container align-items-center" id="start">
         <div class="d-grid p-3 gap-2">
-          <button class="btn btn-primary text-center" style="height: 80px; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 3.00rem;">
+          <button class="btn btn-primary text-center" id="PlayButton" style="height: 80px; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 3.00rem;">
             Play
           </button>
         </div>
