@@ -1,2 +1,0 @@
-
-const gravity = 25;
