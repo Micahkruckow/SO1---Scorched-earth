@@ -17,6 +17,75 @@ const screenHeight = window.innerHeight;
 
 var canvas = document.getElementById('Game');
 var context = canvas.getContext('2d');
+<script>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+// Bullet parameters
+let bullet = {
+    x 50,          // Starting X position
+    y: 500,         // Starting Y position
+    velocityX: 0,   // Horizontal velocity
+    velocityY: 0,   // Vertical velocity
+    gravity: 0.5,   // Gravity strength
+    isFired: false, // Firing state
+    startTime: 0    // Track flight duration
+};
+
+function fireBullet(angle, power) {
+    // Convert angle to radians (Scorched Earth-style angle: 0-180 degrees)
+    const radians = angle * Math.PI / 180;
+    
+    // Calculate velocity components (power is initial speed)
+    bullet.velocityX = Math.cos(radians) * power;
+    bullet.velocityY = -Math.sin(radians) * power; // Negative Y because canvas Y increases downward
+    
+    bullet.isFired = true;
+    bullet.startTime = Date.now();
+}
+
+function updateBullet() {
+    if (!bullet.isFired) return;
+
+    // Calculate time since firing (in seconds)
+    const currentTime = (Date.now() - bullet.startTime) / 1000;
+    
+    // Update position using projectile motion equations
+    bullet.x += bullet.velocityX;
+    bullet.y += bullet.velocityY + 0.5 * bullet.gravity * currentTime ** 2;
+    
+    // Update vertical velocity with gravity
+    bullet.velocityY += bullet.gravity;
+    
+    // Ground collision check (canvas height is 600)
+    if (bullet.y > 600 - 10) {
+        bullet.isFired = false;
+        // Add explosion logic here
+    }
+}
+
+function drawBullet() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    if (bullet.isFired) {
+        ctx.beginPath();
+        ctx.arc(bullet.x, bullet.y, 5, 0, Math.PI * 2); // Draw bullet as circle
+        ctx.fillStyle: '#000';
+        ctx.fill();
+    }
+}
+
+// Game loop
+function gameLoop() {
+    updateBullet();
+    drawBullet();
+    requestAnimationFrame(gameLoop);
+}
+
+// Example: Fire at 45 degrees with power 8
+fireBullet(45, 8);
+gameLoop();
+</script>
 var background = new Image();
 background.src = "/src/images/background.jpg";
 var tank = new Image();
